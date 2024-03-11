@@ -28,7 +28,7 @@ def create_memory_buffer(
     if len(msg_lst) == 0:
         return ConversationBufferWindowMemory(
             k=k,
-            memory_key="chat_history_buffer",
+            memory_key="chat_history",
             input_key=input,
             output_key=output,
             return_messages=True,
@@ -46,7 +46,7 @@ def create_memory_buffer(
 
         return ConversationBufferWindowMemory(
             k=k,
-            memory_key="chat_history_buffer",
+            memory_key="chat_history",
             input_key=input,
             output_key=output,
             chat_memory=ChatMessageHistory(messages=message[-k:]),
@@ -65,7 +65,7 @@ def load_create_embeddings()->FAISS:
         index.save_local("embeddings")
         return index
 
-def _create_agent(self, llm, memory, input_variables, **kwargs)-> AgentExecutor:
+def _create_agent(llm, memory, input_variables, **kwargs)-> AgentExecutor:
     prompt = PromptTemplate(
         template=prefix + format_instructions + suffix,
         input_variables=input_variables,
@@ -74,8 +74,6 @@ def _create_agent(self, llm, memory, input_variables, **kwargs)-> AgentExecutor:
     agent = create_react_agent(
         llm,
         tools=[tools],
-        memory=memory,
-        input_variables=input_variables,
         prompt=prompt,
         **kwargs,
     )
@@ -113,9 +111,9 @@ class GetCatalyzedAgent:
             "chat_history",
         ]
         self.agent = _create_agent(
-            self.llm,
-            self.memory,
-            input_variables,
+            llm=self.llm,
+            memory=self.memory,
+            input_variables=input_variables,
         )
 
     def ask_question(self, query: str) -> dict:
