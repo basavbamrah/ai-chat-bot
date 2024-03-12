@@ -5,7 +5,6 @@ import os
 from flask_cors import CORS
 from datetime import datetime
 from main import GetCatalyzedAgent
-# from flask_accept import accept_mimetypes
 
 app = Flask(__name__)
 app.secret_key = os.urandom(24)
@@ -20,7 +19,6 @@ def index():
 
 
 @app.route("/ask", methods=["POST", "GET"])
-# @accept_mimetypes("application/json")
 def ask():
     try:
         if request.method == "GET":
@@ -35,9 +33,9 @@ def ask():
         response = obj.ask_question(data["query"])
         return {
             "status": "success",
-            "input": response['input'],
-            "output": response['output'],
-            "token": response['token']
+            "input": response["input"],
+            "output": response["output"],
+            "token": response["token"],
         }
     except Exception as e:
         traceback.print_exc()
