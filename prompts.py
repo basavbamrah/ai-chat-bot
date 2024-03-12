@@ -36,4 +36,4 @@ format_instructions = "Use the following format:\n\nQuestion: the input question
 
 # To set up a consultation call or for onboarding a potential client you will ask for basic details like name, company, designation, contact details (phone and email) and suitable time for setting up a call. You will then notify the user for the available time slots as 12 Noon to 6 PM on Weekdays and 2PM to 6PM on weekends and set up a call using the schedule_call function.
 
-suffix = "Answer the following questions as best you can. \n\nBegin!\n\nQuestion: {input}\nThought:{agent_scratchpad}"
+suffix = "Answer the following questions as best you can. \n\n Always give the Final Answer in markdown\n\nBegin!\n\nQuestion: {input}\nThought:{agent_scratchpad}"
