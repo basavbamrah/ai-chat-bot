@@ -11,3 +11,4 @@
 - document exists for 1, 5, 10 pager website. suggest pricing for dynamic pages
 - Frontend UI/UX
 - Firebase integration
+- Country in Request Packet
