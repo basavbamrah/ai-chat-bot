@@ -8,13 +8,14 @@ from main import GetCatalyzedAgent
 
 app = Flask(__name__)
 app.secret_key = os.urandom(24)
+CORS(app, origins=["*"])
 
 
 @app.route("/", methods=["POST", "GET"])
 def index():
     return {
         "status": "success",
-        "version": "0.0.1@23-03-24",
+        "version": "0.0.2@23-03-24",
     }, 200
 
 
@@ -53,4 +54,4 @@ def ask():
 
 
 if __name__ == "__main__":
-    app.run(debug=False,  host="0.0.0.0", port=8080)
+    app.run(debug=False, host="0.0.0.0", port=8080)
