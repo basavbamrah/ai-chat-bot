@@ -15,7 +15,7 @@ def index():
     return {
         "status": "success",
         "version": "0.0.1",
-    }
+    }, 200
 
 
 @app.route("/ask", methods=["POST", "GET"])
@@ -28,20 +28,21 @@ def ask():
             }, 200
         data = request.get_json()
         print(data)
-        
+
         query = data["query"]
         msg_lst = data["msg_lst"]
-        country = data["country"]
-        
+        # user = data["user"]
+        # country = data["country"]
+        # india
 
-        obj = GetCatalyzedAgent()
-        response = obj.ask_question()
+        obj = GetCatalyzedAgent(memory_lst=msg_lst)
+        response = obj.ask_question(query)
         return {
             "status": "success",
             "input": response["input"],
             "output": response["output"],
             "token": response["token"],
-        }
+        }, 200
     except Exception as e:
         traceback.print_exc()
         return {
