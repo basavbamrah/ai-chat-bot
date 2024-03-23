@@ -99,6 +99,11 @@ class GetCatalyzedAgent:
         self.memory = create_memory_buffer(
             memory_lst, input="input", output="output", k=10
         )
+
+        print("=========== memory ===========")
+        print(self.memory)
+        print("=========== memory ===========")
+
         self.handler = CustomTokensHandler()
         self.llm = ChatOpenAI(
             model_name="gpt-4-1106-preview", temperature=0, callbacks=[self.handler]
