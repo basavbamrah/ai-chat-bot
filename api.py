@@ -28,9 +28,14 @@ def ask():
             }, 200
         data = request.get_json()
         print(data)
+        
+        query = data["query"]
+        msg_lst = data["msg_lst"]
+        country = data["country"]
+        
 
         obj = GetCatalyzedAgent()
-        response = obj.ask_question(data["query"])
+        response = obj.ask_question()
         return {
             "status": "success",
             "input": response["input"],
