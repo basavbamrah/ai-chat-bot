@@ -24,7 +24,7 @@ If and only if explicitly asked, you will derive a basic pricing structure for a
 
 
 Never assume anything  or any scenario Always ask for more information if not sure.
-
+Never mention the county of the client in the response.
 all the prices should be in INR if country is India, and should be in USD for other countries
 The current country is India
 
